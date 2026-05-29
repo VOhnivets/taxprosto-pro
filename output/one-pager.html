@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>taxprosto.pro — One-Pager</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 15px; line-height: 1.6; color: #1a1a1a; background: #fff; max-width: 720px; margin: 48px auto; padding: 0 24px; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+    .tagline { color: #555; font-size: 16px; margin-bottom: 32px; }
+    h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin: 28px 0 10px; }
+    p { margin-bottom: 10px; }
+    ul { padding-left: 18px; }
+    li { margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; padding: 0; }
+    .steps li { counter-increment: step; padding-left: 32px; position: relative; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); position: absolute; left: 0; top: 1px; background: #1a1a1a; color: #fff; font-size: 11px; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+    .card { border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px 16px; }
+    .card strong { display: block; margin-bottom: 4px; font-size: 14px; }
+    .card span { font-size: 13px; color: #555; }
+    .badge { display: inline-block; background: #f0f0f0; color: #333; font-size: 12px; padding: 2px 8px; border-radius: 4px; margin-right: 6px; margin-bottom: 6px; }
+    .highlight { background: #f7f7f7; border-left: 3px solid #1a1a1a; padding: 12px 16px; border-radius: 0 6px 6px 0; margin-top: 10px; }
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e5e5; font-size: 13px; color: #888; }
+    a { color: #1a1a1a; }
+  </style>
+</head>
+<body>
+
+  <h1>taxprosto.pro</h1>
+  <p class="tagline">Заповни річну декларацію самостійно — без бухгалтера, без помилок.</p>
+
+  <h2>Проблема</h2>
+  <p>Мільйони українців щороку зобов'язані подавати річну податкову декларацію (форма 0100424), але більшість не знають як — або платять бухгалтеру за просту операцію. Офіційний Електронний кабінет незручний і вимагає технічних знань.</p>
+
+  <h2>Рішення</h2>
+  <p>Веб-застосунок, який перетворює довідку про доходи з Дії у готовий XML-файл для подачі. Все відбувається в браузері — жодних серверів, жодного витоку даних.</p>
+
+  <ol class="steps">
+    <li>Завантажуєш довідку про доходи (PDF або XML з Дії)</li>
+    <li>Застосунок парсить дані: роботодавець, нарахований дохід, утриманий ПДФО і ВЗ</li>
+    <li>Генерує валідний XML за схемою ДПСУ (J0100424 / F0100424)</li>
+    <li>Завантажуєш файл і імпортуєш у cabinet.tax.gov.ua — готово</li>
+  </ol>
+
+  <h2>Для кого</h2>
+  <div class="grid">
+    <div class="card">
+      <strong>ФОП 3-я група</strong>
+      <span>Подають річну декларацію з доходів поза ЄП</span>
+    </div>
+    <div class="card">
+      <strong>Фізособи з іноземними доходами</strong>
+      <span>Зарплата, дивіденди, фріланс з-за кордону</span>
+    </div>
+    <div class="card">
+      <strong>Податкова знижка</strong>
+      <span>Навчання, іпотека, лікування — хочуть повернути переплату</span>
+    </div>
+    <div class="card">
+      <strong>Самозайняті та інші</strong>
+      <span>Будь-хто, хто подає форму 0100424 самостійно</span>
+    </div>
+  </div>
+
+  <h2>Ключові переваги</h2>
+  <ul>
+    <li><strong>Приватно:</strong> дані не залишають браузер — 100% client-side</li>
+    <li><strong>Валідно:</strong> XML перевіряється по XSD-схемі ДПСУ</li>
+    <li><strong>Просто:</strong> без реєстрації, без оплати на старті, без зайвих кроків</li>
+    <li><strong>Сумісно:</strong> результат напряму імпортується в Електронний кабінет</li>
+  </ul>
+
+  <h2>Технічний стек</h2>
+  <div>
+    <span class="badge">Client-side JS</span>
+    <span class="badge">XML / XSD ДПСУ</span>
+    <span class="badge">PDF / XML парсинг</span>
+    <span class="badge">Дія API</span>
+    <span class="badge">cabinet.tax.gov.ua</span>
+  </div>
+
+  <h2>Стадія</h2>
+  <div class="highlight">
+    <strong>MVP</strong> — перший робочий прототип. Пріоритет: парсинг довідки → генерація валідного XML → завантаження. Декларація за 2024 рік, форма 0100424.
+  </div>
+
+  <h2>Наступні кроки</h2>
+  <ul>
+    <li>Реалізувати парсер PDF-довідок з Дії</li>
+    <li>Генерація та валідація XML по XSD-схемі</li>
+    <li>Публічний запуск з feedback-формою</li>
+    <li>Розширення: податкова знижка, іноземні доходи, нагадування</li>
+  </ul>
+
+  <footer>
+    <a href="https://taxprosto.pro">taxprosto.pro</a> &nbsp;·&nbsp; MVP 2025 &nbsp;·&nbsp; Всі дані обробляються локально у вашому браузері
+  </footer>
+
+</body>
+</html>

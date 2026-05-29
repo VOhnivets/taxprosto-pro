@@ -1,0 +1,22 @@
+.DS_Store
+*.DS_Store
+.claude/cache/
+node_modules/
+*.log
+
+# Персональні податкові дані — НЕ комітити (приватність)
+input/
+output/*.xml
+knowledge/rules/
+
+# Dev-артефакти
+package.json
+package-lock.json
+.playwright-mcp/
+extract.mjs
+test-parse.mjs
+gen_test.mjs
+
+# Великі бінарники (XSD-схеми тримаємо як reference, архів/PDF — ні)
+knowledge/*.arj
+knowledge/xsd/*.pdf
